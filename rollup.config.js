@@ -3,6 +3,7 @@ import commonjs from '@rollup/plugin-commonjs'
 import resolve from '@rollup/plugin-node-resolve'
 import external from 'rollup-plugin-peer-deps-external'
 import url from '@rollup/plugin-url'
+import json from "@rollup/plugin-json";
 
 import pkg from './package.json'
 
@@ -27,6 +28,7 @@ export default {
     url({ exclude: ['**/*.svg'] }),
     resolve(),
     typescript(),
-    commonjs({ extensions: ['.js', '.ts'] })
+    commonjs({ extensions: ['.js', '.ts'] }),
+    json()
   ]
 }

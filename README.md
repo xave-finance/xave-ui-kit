@@ -12,18 +12,28 @@ npm install --save xave-ui-kit
 
 ## Usage
 
+### Geofence
+
 ```tsx
 import * as React from 'react'
 
-import { useMyHook } from 'xave-ui-kit'
+import { GeofenceCountry, useGeofence }  from 'xave-ui-kit'
 
 const Example = () => {
-  const example = useMyHook()
-  return (
-    <div>
-      {example}
-    </div>
-  )
+  const { loading, rejected } = useGeofence(GeofenceCountry.SINGAPORE);
+  if (loading) {
+    return (
+      <div>
+        Loaded
+      </div>
+    );
+  } else if (!loading && rejected) {
+    return (
+       <div>
+        Blocked Content
+      </div>
+    );
+  }
 }
 ```
 

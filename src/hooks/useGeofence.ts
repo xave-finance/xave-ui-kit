@@ -1,5 +1,5 @@
 // Hook that automatically geofences an app
-// import axios from "axios"
+import axios from "axios"
 import { useEffect, useState } from "react"
 
 export enum GeofenceCountry {
@@ -16,25 +16,24 @@ export const useGeofence = (country: GeofenceCountry) => {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    setLoading(false)
-    setRejected(true)
-    // axios
-    //   .get("https://ipapi.co/country")
-    //   .then(({ data }) => {
-    //     if (data === country) {
-    //       setRejected(true)
-    //     } else {
-    //       setRejected(false)
-    //     }
-    //   })
-    //   .catch((e) => {
-    //     // Geofence failed. Should we default to rejected or ok?
-    //     console.log(e)
-    //     setRejected(false)
-    //   })
-    //   .finally(() => {
-    //     setLoading(false)
-    //   })
+    setLoading(true)
+    axios
+      .get("https://ipapi.co/country")
+      .then(({ data }) => {
+        if (data === country) {
+          setRejected(true)
+        } else {
+          setRejected(false)
+        }
+      })
+      .catch((e) => {
+        // Geofence failed. Should we default to rejected or ok?
+        console.log(e)
+        setRejected(false)
+      })
+      .finally(() => {
+        setLoading(false)
+      })
   }, [country])
 
   return {

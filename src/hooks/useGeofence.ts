@@ -3,6 +3,7 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 
 export enum GeofenceCountry {
+  PHILIPPINES = "PH",
   SINGAPORE = "SG",
   US = "US",
 }

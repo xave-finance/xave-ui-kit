@@ -1,5 +1,5 @@
 // Hook that automatically geofences an app
-import axios from "axios"
+// import axios from "axios"
 import { useEffect, useState } from "react"
 
 export enum GeofenceCountry {
@@ -12,10 +12,12 @@ export enum GeofenceCountry {
 export const useGeofence = (country: GeofenceCountry) => {
   // If rejected, redirect to rejectedUrl
   const [rejected, setRejected] = useState(true)
+  // const rejected = true
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    setLoading(true)
+    setLoading(false)
+    setRejected(true)
     // axios
     //   .get("https://ipapi.co/country")
     //   .then(({ data }) => {

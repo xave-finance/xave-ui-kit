@@ -22,12 +22,13 @@
     "predeploy": "cd example && yarn install && yarn run build",
     "deploy": "gh-pages -d example/build"
   },
-  "dependencies": {},
+  "dependencies": {
+    "axios-hooks": "^3.1.1"
+  },
   "peerDependencies": {
     "react": "^16.9.0"
   },
   "devDependencies": {
-    "axios": "^0.27.2",
     "@babel/core": "^7.2.2",
     "@babel/runtime": "^7.3.1",
     "@rollup/plugin-babel": "^5.2.0",
@@ -39,6 +40,7 @@
     "@testing-library/react-hooks": "^3.2.1",
     "@types/jest": "^23.3.13",
     "@types/react": "^16.7.22",
+    "axios": "^0.27.2",
     "cross-env": "^5.2.0",
     "gh-pages": "^2.0.1",
     "react": "^16.9.0",

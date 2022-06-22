@@ -3,12 +3,14 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 
 export enum GeofenceCountry {
+  PHILIPPINES = "PH",
   SINGAPORE = "SG",
   US = "US",
+ 
 }
 
 // and then redirects to a URL if not applicable
-export const useGeofence = (country: GeofenceCountry) => {
+export const useGeofence = (country: GeofenceCountry, url: string) => {
   // If rejected, redirect to rejectedUrl
   const [rejected, setRejected] = useState(false)
   const [loading, setLoading] = useState(true)
@@ -16,7 +18,7 @@ export const useGeofence = (country: GeofenceCountry) => {
   useEffect(() => {
     setLoading(true)
     axios
-      .get("https://ipapi.co/country")
+      .get(url)
       .then(({ data }) => {
         if (data === country) {
           setRejected(true)
